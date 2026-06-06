@@ -16,8 +16,11 @@
     <div>
         <h2>🏏 RishiRaj Cricket</h2>
     </div>
+    <button class="menu-btn" onclick="toggleMenu()">
+    ☰
+</button>
 
-   <div class="nav-links">
+   <div class="nav-links" id="mobileMenu">
 
     <a href="/">Home</a>
     <a href="{% url 'predictions' %}">Predictions</a>
@@ -58,11 +61,6 @@
     >
 </form>
 
-    <div>
-        <a href="#">Login</a>
-        <a href="#">Signup</a>
-    </div>
-
 </nav>
 
     <hr>
@@ -84,6 +82,12 @@
 
    📢 Join Telegram
 </a>
+
+<script>
+function toggleMenu() {
+    document.getElementById("mobileMenu").classList.toggle("show");
+}
+</script>
 
 </body>
 </html>
