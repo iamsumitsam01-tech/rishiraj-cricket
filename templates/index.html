@@ -1,0 +1,369 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>🏏 Cricket Predictions & Latest Updates</h1>
+
+        <p>
+            Match Predictions • Cricket News • Team Analysis • Tournament Coverage
+        </p>
+        <a href="https://t.me/+SGzfN49u7CEyM2M0"
+   class="telegram-btn"
+   target="_blank">
+   🚀 Join Telegram
+</a>
+
+    </div>
+
+</section>
+
+<section class="today-match">
+
+    <h2>🔥 Today's Featured Match</h2>
+    
+    {% for match in today_matches %}
+
+<div class="match-card">
+
+    <div class="team">
+        <img src="{{ match.logo1.url }}" alt="">
+        <h3>{{ match.team1 }}</h3>
+    </div>
+
+    <div class="vs-circle">
+        VS
+    </div>
+
+    <div class="team">
+        <img src="{{ match.logo2.url }}" alt="">
+        <h3>{{ match.team2 }}</h3>
+    </div>
+
+</div>
+<a href="{% url 'vote' match.id %}"
+   class="predict-btn">
+   Vote Prediction
+</a>
+<div class="prediction-box">
+    <h3>🏆 Prediction</h3>
+    <p>{{ match.prediction }}</p>
+</div>
+
+<div class="prediction-details-card">
+
+    <h3>📊 Prediction Confidence</h3>
+
+    <div class="team-row">
+        <span>{{ match.team1 }}</span>
+        <span>{{ match.confidence_team1 }}%</span>
+    </div>
+
+    <div class="progress">
+        <div class="progress-fill"
+             style="width: {{ match.confidence_team1 }}%">
+        </div>
+    </div>
+
+    <div class="team-row">
+        <span>{{ match.team2 }}</span>
+        <span>{{ match.confidence_team2 }}%</span>
+    </div>
+
+    <div class="progress">
+        <div class="progress-fill"
+             style="width: {{ match.confidence_team2 }}%">
+        </div>
+    </div>
+
+    <h3>📝 Why This Prediction?</h3>
+
+    <div class="reason">
+        ✓ {{ match.reason1 }}
+    </div>
+
+    <div class="reason">
+        ✓ {{ match.reason2 }}
+    </div>
+
+    <div class="reason">
+        ✓ {{ match.reason3 }}
+    </div>
+
+</div>
+
+
+<p>{{match.prediction_lock_time}}</p>
+<div class="countdown-card">
+    <h3>⏳ Prediction Lock Timer</h3>
+
+    <div class="timer-boxes">
+        <div class="time-box">
+            <span class="hours">00</span>
+            <small>Hours</small>
+        </div>
+
+        <div class="time-box">
+            <span class="minutes">00</span>
+            <small>Minutes</small>
+        </div>
+
+        <div class="time-box">
+            <span class="seconds">00</span>
+            <small>Seconds</small>
+        </div>
+    </div>
+</div>
+
+<script>
+const lockTime = new Date(
+"{{ match.prediction_lock_time|date:'c' }}"
+).getTime();
+
+console.log("LOCK:", lockTime);
+console.log("NOW:", new Date().getTime());
+
+setInterval(function () {
+
+    const now = new Date().getTime();
+    const distance = lockTime - now;
+
+    if(distance < 0){
+        document.querySelector(".countdown-card").innerHTML =
+        "<h3>🔒 Prediction Locked</h3>";
+        return;
+    }
+
+    const hours = Math.floor(distance / (1000 * 60 * 60));
+
+    const minutes = Math.floor(
+        (distance % (1000 * 60 * 60))
+        / (1000 * 60)
+    );
+
+    const seconds = Math.floor(
+        (distance % (1000 * 60))
+        / 1000
+    );
+
+    document.querySelector(".hours").innerText =
+String(hours).padStart(2,'0');
+
+document.querySelector(".minutes").innerText =
+String(minutes).padStart(2,'0');
+
+document.querySelector(".seconds").innerText =
+String(seconds).padStart(2,'0');
+
+},1000);
+</script>
+
+<br>
+
+{% endfor %}
+    
+</section>
+
+</section>
+
+
+<section class="upcoming-section">
+
+    <h2>🔒 Upcoming Matches</h2>
+
+    <div class="upcoming-grid">
+
+        {% for match in upcoming_matches %}
+
+        <div class="upcoming-card">
+
+            <img src="{{ match.logo1.url }}">
+            <span>VS</span>
+            <img src="{{ match.logo2.url }}">
+
+            <h3>{{ match.team1 }} vs {{ match.team2 }}</h3>
+
+            {% if match.prediction_locked %}
+    <div class="locked-box">
+        🔒 Prediction Locked
+    </div>
+{% else %}
+    <button class="predict-btn">
+        View Prediction
+    </button>
+{% endif %}
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<section class="teams-section">
+
+    <h2>🏏 Top Cricket Teams</h2>
+
+    <div class="teams-grid">
+
+        <div class="team-card">
+            <img src="/media/teams/india.jpg">
+            <h3>India</h3>
+            <p>Captain: Rohit Sharma</p>
+            <p>Coach: Gautam Gambhir</p>
+            <p>Ranking: #1 ODI</p>
+            <p>🏆 World Cups: 2</p>
+            <p>🔥 Star Player: Virat Kohli</p>
+        </div>
+
+        <div class="team-card">
+            <img src="/media/teams/eng.png">
+            <h3>Australia</h3>
+            <p>Captain: Pat Cummins</p>
+            <p>Coach: Andrew McDonald</p>
+            <p>Ranking: #2 ODI</p>
+            <p>🏆 World Cups: 2</p>
+            <p>🔥 Star Player: Jeneffer</p>
+        </div>
+
+        <div class="team-card">
+            <img src="/media/teams/south.jpg">
+            <h3>England</h3>
+            <p>Captain: Jos Buttler</p>
+            <p>Coach: Brendon McCullum</p>
+            <p>Ranking: #3 ODI</p>
+            <p>🏆 World Cups: 2</p>
+            <p>🔥 Star Player: Jos Buttler</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="news-section">
+
+    <h2>📰 Latest Cricket News</h2>
+
+    <div class="news-grid">
+
+        {% for news in latest_news %}
+
+        <div class="news-card">
+
+            <img src="{{ news.image.url }}" alt="">
+
+            <div class="news-content">
+
+                <h3>{{ news.title }}</h3>
+
+                <p>
+                    {{ news.description|truncatechars:120 }}
+                </p>
+
+                <a href="#" class="read-btn">
+                    Read More
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+<section class="history-section">
+
+    <h2>📊 Prediction History</h2>
+
+    {% for match in history_matches %}
+
+    <div class="history-card">
+
+        <h3>{{ match.team1 }} vs {{ match.team2 }}</h3>
+
+        <p>Prediction: {{ match.prediction }}</p>
+
+        <p>Result: {{ match.result }}</p>
+
+        {% if match.prediction_correct %}
+            <span class="correct">✅ Correct</span>
+        {% else %}
+            <span class="wrong">❌ Wrong</span>
+        {% endif %}
+
+    </div>
+
+    {% endfor %}
+
+</section>
+<section class="stats-section">
+
+    <h2>📊 Prediction Statistics</h2>
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <h3>{{ total_predictions }}</h3>
+            <p>Total Predictions</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>{{ correct_predictions }}</h3>
+            <p>Correct</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>{{ wrong_predictions }}</h3>
+            <p>Wrong</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>{{ accuracy }}%</h3>
+            <p>Accuracy</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="history-section">
+    <h2>📊 Prediction History</h2>
+
+    <table class="history-table">
+        <tr>
+            <th>Match</th>
+            <th>Prediction</th>
+            <th>Result</th>
+            <th>Status</th>
+        </tr>
+
+        {% for match in history_matches %}
+        <tr>
+            <td>{{ match.team1 }} vs {{ match.team2 }}</td>
+            <td>{{ match.prediction }}</td>
+            <td>{{ match.result }}</td>
+
+            {% if match.prediction_correct %}
+            <td>✅ Correct</td>
+            {% else %}
+            <td>❌ Wrong</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h3>🎯 Overall Accuracy: {{ accuracy }}%</h3>
+</section>
+
+
+{% endblock %}

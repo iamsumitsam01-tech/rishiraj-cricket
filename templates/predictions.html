@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block title %}Predictions{% endblock %}
+
+{% block content %}
+
+<div class="prediction-container">
+
+<!-- VOTING SECTION START -->
+
+<div class="vote-container">
+
+    <div class="vote-card">
+
+<h1 class="vote-title">
+🏏 Match Prediction Voting
+</h1>
+
+<p>
+Predict today's winner and climb the leaderboard.
+</p>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="success-message">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+{% if user.is_authenticated %}
+
+    {% if already_voted %}
+
+        <div class="vote-locked">
+            ✅ Your Vote: {{ user_vote }}
+            <br>
+            🔒 Prediction Locked
+        </div>
+
+    {% else %}
+
+        <form method="POST">
+
+    {% csrf_token %}
+
+    <button
+        name="team"
+        value="{{ match.team1 }}"
+        class="vote-btn">
+
+        {{ match.team1 }}
+
+    </button>
+
+    <button
+        name="team"
+        value="{{ match.team2 }}"
+        class="vote-btn">
+
+        {{ match.team2 }}
+
+    </button>
+
+</form>
+
+    {% endif %}
+
+{% else %}
+
+    <a href="{% url 'signup' %}" class="login-warning">
+        🔒 Login Required To Participate In Predictions
+    </a>
+
+{% endif %}
+
+</div>
+</div>
+<!-- RULES -->
+
+<div class="rules-card">
+
+    <h2>📜 Prediction Rules</h2>
+
+    <ul>
+        <li>One account can vote only once.</li>
+        <li>Votes cannot be changed.</li>
+        <li>Voting locks before match start.</li>
+        <li>Only registered users can vote.</li>
+        <li>Correct predictions improve leaderboard rank.</li>
+    </ul>
+
+</div>
+
+<!-- LEADERBOARD START -->
+
+<section class="leaderboard-section">
+
+<h1>🏆 Top Predictors</h1>
+
+<table class="leaderboard-table">
+
+<thead>
+<tr>
+<th>Rank</th>
+<th>User</th>
+<th>Accuracy</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for player in leaderboard %}
+
+<tr>
+
+<td>
+
+{% if forloop.counter == 1 %}
+🥇
+{% elif forloop.counter == 2 %}
+🥈
+{% elif forloop.counter == 3 %}
+🥉
+{% endif %}
+
+{{ forloop.counter }}
+
+</td>
+
+<td>{{ player.user_name }}</td>
+
+<td>{{ player.accuracy }}%</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</section>
+
+</div>
+
+{% endblock %}

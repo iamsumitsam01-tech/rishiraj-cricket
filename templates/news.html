@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="news-hero">
+
+    <h1>📰 Cricket News Center</h1>
+
+    <p>
+        Latest cricket updates, match reports,
+        player news and tournament coverage.
+    </p>
+
+</section>
+
+<!-- Search -->
+
+<section class="news-search">
+
+    <input
+        type="text"
+        placeholder="Search cricket news..."
+    >
+
+</section>
+
+<!-- Featured -->
+
+<section class="featured-news">
+
+    <div class="featured-content">
+
+        <span class="badge">
+            BREAKING NEWS
+        </span>
+
+        <h2>
+            {{ featured_news.title }}
+        </h2>
+
+        <p>
+            {{ featured_news.summary }}
+        </p>
+
+        <a href="#">
+            Read Full Story →
+        </a>
+
+    </div>
+
+</section>
+
+<!-- Categories -->
+
+<section class="news-categories">
+
+    <button>IPL</button>
+    <button>ICC</button>
+    <button>India</button>
+    <button>Australia</button>
+    <button>England</button>
+
+</section>
+
+<!-- Latest News -->
+
+<section class="latest-news">
+
+    <h2>🔥 Latest News</h2>
+
+    <div class="news-grid">
+
+        {% for news in news_list %}
+
+        <div class="news-card">
+
+            <img src="{{ news.image.url }}" alt="">
+
+            <div class="news-content">
+
+                <span>
+                    {{ news.category }}
+                </span>
+
+                <h3>
+                    {{ news.title }}
+                </h3>
+
+                <p>
+                    {{ news.summary|truncatewords:20 }}
+                </p>
+
+                <a href="#">
+                    Read More
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

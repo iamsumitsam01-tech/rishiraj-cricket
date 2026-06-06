@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}RishiRaj Cricket{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+
+    <div>
+        <h2>🏏 RishiRaj Cricket</h2>
+    </div>
+
+   <div class="nav-links">
+
+    <a href="/">Home</a>
+    <a href="{% url 'predictions' %}">Predictions</a>
+    <a href="{% url 'news' %}">News</a>
+    <a href="{% url 'teams' %}">Teams</a>
+    <a href="{% url 'about' %}">About</a>
+    <a href="{% url 'contact' %}">Contact</a>
+
+    {% if user.is_authenticated %}
+
+        <span class="username">
+            👤 {{ user.username }}
+        </span>
+
+        <a href="{% url 'logout' %}">
+            Logout
+        </a>
+
+    {% else %}
+
+        <a href="{% url 'login' %}">
+            Login
+        </a>
+
+        <a href="{% url 'signup' %}">
+            Sign Up
+        </a>
+
+    {% endif %}
+
+</div>
+    <form method="GET" action="">
+    <input
+        type="text"
+        name="search"
+        placeholder="Search news or matches..."
+        class="search-box"
+    >
+</form>
+
+    <div>
+        <a href="#">Login</a>
+        <a href="#">Signup</a>
+    </div>
+
+</nav>
+
+    <hr>
+
+    {% block content %}
+    {% endblock %}
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 RishiRaj Cricket</p>
+        <p>Match Predictions • Cricket News • Analysis</p>
+    </footer>
+
+<a href="https://t.me/+SGzfN49u7CEyM2M0"
+   target="_blank"
+   class="telegram-float">
+
+   📢 Join Telegram
+</a>
+
+</body>
+</html>
