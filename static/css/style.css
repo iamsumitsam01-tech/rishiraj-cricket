@@ -1,3 +1,8 @@
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 *{
     margin:0;
     padding:0;
@@ -1352,5 +1357,13 @@ footer{
 
     nav h2{
         font-size:28px;
+    }
+}
+.menu-btn {
+    display: none;
+}
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block;
     }
 }
