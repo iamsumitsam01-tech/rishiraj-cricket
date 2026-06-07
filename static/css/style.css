@@ -1472,12 +1472,12 @@ footer{
 
 
 .navbar{
-    position:fixed;
-    top:15px;
+   
+   
     left:15px;
     right:15px;
 
-    z-index:9999;
+    
 
     background:rgba(10,15,35,.95);
 
@@ -1681,4 +1681,57 @@ main{
     gap:35px;
 
     margin-left:20px;
+}
+.nav-container{
+    background:rgba(5,10,35,.95);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:25px;
+
+    padding:18px 40px;
+
+    display:flex;
+    align-items:center;
+
+    width:100%;
+}
+.logo{
+    margin-right:auto;
+}
+
+.desktop-nav{
+    display:flex;
+    gap:35px;
+
+    margin-left:150px;
+}
+@media screen and (max-width:768px){
+
+    .desktop-nav{
+        display:none !important;
+    }
+
+    .menu-btn{
+        display:block !important;
+        margin-left:auto;
+    }
+
+    .logo{
+        font-size:24px;
+    }
+}
+
+@media screen and (min-width:769px){
+
+    .desktop-nav{
+        display:flex !important;
+        gap:35px;
+        margin-left:150px;
+    }
+
+    .menu-btn{
+        display:none !important;
+    }
+}
+.desktop-nav{
+    margin-left:250px;
 }
