@@ -7,20 +7,23 @@
     <title>{% block title %}RishiRaj Cricket{% endblock %}</title>
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <!-- Navbar -->
-    <nav>
+    <nav class="navbar">
 
-    <div>
-        <h2>🏏 RishiRaj Cricket</h2>
-    </div>
-    <button class="menu-btn" onclick="toggleMenu()">
-    ☰
+<div class="nav-container">
+
+<a href="/" class="logo">
+RishiRaj Cricket
+</a>
+
+<button class="menu-btn" onclick="toggleMenu()">
+☰
 </button>
-
-   <div class="nav-links" id="mobileMenu">
+<div class="desktop-nav">
 
     <a href="/">Home</a>
     <a href="{% url 'predictions' %}">Predictions</a>
@@ -29,47 +32,35 @@
     <a href="{% url 'about' %}">About</a>
     <a href="{% url 'contact' %}">Contact</a>
 
-    {% if user.is_authenticated %}
-
-        <span class="username">
-            👤 {{ user.username }}
-        </span>
-
-        <a href="{% url 'logout' %}">
-            Logout
-        </a>
-
-    {% else %}
-
-        <a href="{% url 'login' %}">
-            Login
-        </a>
-
-        <a href="{% url 'signup' %}">
-            Sign Up
-        </a>
-
-    {% endif %}
+</div>
 
 </div>
-    <form method="GET" action="">
-    <input
-        type="text"
-        name="search"
-        placeholder="Search news or matches..."
-        class="search-box"
-    >
-</form>
+
+<div class="mobile-menu" id="mobileMenu">
+
+<a href="/">Home</a>
+<a href="{% url 'predictions' %}">Predictions</a>
+<a href="{% url 'news' %}">News</a>
+<a href="{% url 'teams' %}">Teams</a>
+<a href="{% url 'about' %}">About</a>
+<a href="{% url 'contact' %}">Contact</a>
+
+{% if user.is_authenticated %}
+<a href="{% url 'logout' %}">Logout</a>
+{% else %}
+<a href="{% url 'login' %}">Login</a>
+<a href="{% url 'signup' %}">Sign Up</a>
+{% endif %}
+
+</div>
 
 </nav>
 
-    <hr>
 
     {% block content %}
     {% endblock %}
 
-    <hr>
-
+    
     <!-- Footer -->
     <footer>
         <p>© 2026 RishiRaj Cricket</p>
