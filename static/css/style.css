@@ -1460,6 +1460,7 @@ footer{
 
     .logo{
         font-size:1.2rem;
+        color: red !important;
     }
 }
 @media(max-width:768px){
@@ -1495,7 +1496,7 @@ footer{
 .nav-container{
     display:flex;
     align-items:center;
-    justify-content:space-between;
+    
 }
 
 .logo{
@@ -1597,4 +1598,87 @@ main{
     .desktop-menu{
         display:none;
     }
+}
+/* DESKTOP */
+
+.desktop-nav{
+    display:flex;
+    gap:35px;
+    margin-left:auto;
+    padding-right: 80px;
+}
+
+.menu-btn{
+    display:none;
+}
+
+/* MOBILE */
+
+@media screen and (max-width:768px){
+
+    .nav-container{
+        justify-content:space-between;
+    }
+
+    .desktop-nav{
+        display:none !important;
+    }
+
+    .menu-btn{
+        display:block !important;
+        margin-left:auto;
+    }
+
+    .logo{
+        font-size:24px;
+    }
+}
+@media screen and (min-width:769px){
+
+    .menu-btn{
+        display:none !important;
+    }
+
+    .desktop-nav{
+        display:flex !important;
+
+    }
+}
+.nav-container{
+    display:flex;
+    align-items:center;
+}
+
+.logo{
+    margin-right:auto;
+}
+
+.desktop-nav{
+    display:flex;
+    gap:35px;
+}
+
+.nav-container{
+    background:rgba(5,10,35,.95);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:25px;
+    padding:18px 40px;
+
+    display:flex;
+    align-items:center;
+}
+.logo{
+    color:white;
+    text-decoration:none;
+    font-size:32px;
+    font-weight:800;
+    font-family:'Outfit',sans-serif;
+
+    margin-right:auto;
+}
+.desktop-nav{
+    display:flex;
+    gap:35px;
+
+    margin-left:20px;
 }
