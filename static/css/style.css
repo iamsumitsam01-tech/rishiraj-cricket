@@ -1478,6 +1478,8 @@ footer{
     display:flex;
     align-items:center;
     justify-content:space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .logo{
@@ -1782,4 +1784,70 @@ main{
     .logo{
         gap:12px;
     }
+}
+
+.desktop-nav{
+    display:flex;
+    align-items:center;
+    gap:35px;
+    margin-left:auto;
+}
+
+.desktop-nav a{
+    position:relative;
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+    padding:5px 0;
+}
+
+.desktop-nav a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-4px;
+    width:0;
+    height:2px;
+    background:#00d4ff;
+    transition:0.3s;
+}
+
+.desktop-nav a:hover::after{
+    width:100%;
+}
+
+.desktop-nav a:hover{
+    color:#00d4ff;
+}
+
+.navbar{
+    position:fixed;
+    top:20px;
+
+    left:50%;
+    transform:translateX(-50%);
+
+    width:90%;
+    max-width:1200px;
+
+    z-index:9999;
+
+    background:rgba(10,15,35,.95);
+    backdrop-filter:blur(15px);
+
+    border-radius:20px;
+
+    padding:15px 30px;
+    box-sizing:border-box;
+}
+.nav-container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.desktop-nav{
+    display:flex;
+    gap:30px;
+    margin-left:auto;
 }
