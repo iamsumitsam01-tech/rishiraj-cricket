@@ -280,31 +280,7 @@ String(seconds).padStart(2,'0');
     </div>
 
 </section>
-<section class="history-section">
 
-    <h2>📊 Prediction History</h2>
-
-    {% for match in history_matches %}
-
-    <div class="history-card">
-
-        <h3>{{ match.team1 }} vs {{ match.team2 }}</h3>
-
-        <p>Prediction: {{ match.prediction }}</p>
-
-        <p>Result: {{ match.result }}</p>
-
-        {% if match.prediction_correct %}
-            <span class="correct">✅ Correct</span>
-        {% else %}
-            <span class="wrong">❌ Wrong</span>
-        {% endif %}
-
-    </div>
-
-    {% endfor %}
-
-</section>
 <section class="stats-section">
 
     <h2>📊 Prediction Statistics</h2>
@@ -339,6 +315,8 @@ String(seconds).padStart(2,'0');
 <section class="history-section">
     <h2>📊 Prediction History</h2>
 
+
+    <div class="table-wrapper">
     <table class="history-table">
         <tr>
             <th>Match</th>
@@ -361,7 +339,7 @@ String(seconds).padStart(2,'0');
         </tr>
         {% endfor %}
     </table>
-
+</div>
     <h3>🎯 Overall Accuracy: {{ accuracy }}%</h3>
 </section>
 
