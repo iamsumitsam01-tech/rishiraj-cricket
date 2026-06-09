@@ -1852,11 +1852,12 @@ main{
     margin-left:auto;
 }
 /* =========================
-   TOP CRICKET TEAMS
-========================= */
+ /* ======================
+   TOP TEAMS SECTION
+====================== */
 
 .teams-section{
-    padding:80px 20px;
+    padding:60px 0;
     text-align:center;
     overflow:hidden;
 }
@@ -1864,14 +1865,14 @@ main{
 .teams-section h2{
     font-size:50px;
     font-weight:800;
-    margin-bottom:10px;
     color:#fff;
+    margin-bottom:10px;
 }
 
 .teams-subtitle{
-    color:#a0a0a0;
-    font-size:18px;
+    color:#aaa;
     margin-bottom:40px;
+    font-size:18px;
 }
 
 /* MARQUEE */
@@ -1879,45 +1880,45 @@ main{
 .teams-marquee{
     width:100%;
     overflow:hidden;
-    position:relative;
 }
 
-/* MOVING TRACK */
+/* MOVING LOGOS */
 
 .teams-track{
     display:flex;
     align-items:center;
-    gap:40px;
+    gap:60px;
+
     width:max-content;
-    animation:teamScroll 30s linear infinite;
+
+    animation:logoMove 25s linear infinite;
 }
 
 /* LOGOS */
 
 .teams-track img{
-    width:90px;
-    height:90px;
-    object-fit:cover;
+    width:100px;
+    height:100px;
+
+    object-fit:contain;
+
     border-radius:50%;
 
-    border:3px solid #00f7ff;
+    background:transparent;
+    border:none;
 
-    background:#111;
+    box-shadow:none;
 
-    box-shadow:
-    0 0 10px rgba(0,247,255,.5),
-    0 0 25px rgba(0,247,255,.3);
-
-    transition:.3s;
+    transition:.3s ease;
 }
 
 .teams-track img:hover{
     transform:scale(1.15);
 }
 
-/* INFINITE LOOP */
+/* LOOP */
 
-@keyframes teamScroll{
+@keyframes logoMove{
 
     0%{
         transform:translateX(0);
@@ -1933,21 +1934,13 @@ main{
 
 @media(max-width:768px){
 
-    .teams-section{
-        padding:60px 10px;
-    }
-
     .teams-section h2{
         font-size:38px;
     }
 
-    .teams-subtitle{
-        font-size:15px;
-    }
-
     .teams-track{
-        gap:25px;
-        animation:teamScroll 22s linear infinite;
+        gap:35px;
+        animation:logoMove 18s linear infinite;
     }
 
     .teams-track img{
@@ -1955,4 +1948,133 @@ main{
         height:70px;
     }
 
+}
+.videos-section{
+    padding:80px 20px;
+    text-align:center;
+}
+
+.videos-section h2{
+    font-size:42px;
+    margin-bottom:40px;
+}
+
+.slider-container{
+    position:relative;
+    max-width:1000px;
+    margin:auto;
+}
+
+.slider{
+    display:flex;
+    overflow-x:auto;
+    gap:20px;
+    scroll-behavior:smooth;
+    scrollbar-width:none;
+}
+
+.slider::-webkit-scrollbar{
+    display:none;
+}
+
+.slide{
+    flex:0 0 300px;
+}
+
+.slide img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:20px;
+    transition:.3s;
+}
+
+.slide img:hover{
+    transform:scale(1.05);
+}
+
+.prev,
+.next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:10;
+
+    width:50px;
+    height:50px;
+
+    border:none;
+    border-radius:50%;
+
+    cursor:pointer;
+    font-size:24px;
+}
+
+.prev{
+    left:-20px;
+}
+
+.next{
+    right:-20px;
+}
+
+.stat-card{
+    background: linear-gradient(145deg,#111,#1b1b1b);
+    border: 1px solid rgba(255,165,0,.3);
+    border-radius: 20px;
+    text-align:center;
+    padding:25px;
+    box-shadow:0 0 25px rgba(255,165,0,.25);
+    transition:.3s;
+}
+
+.stat-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 35px rgba(255,165,0,.6);
+}
+
+.stat-card h3{
+    color:#ff9f1a;
+    font-size:42px;
+    font-weight:800;
+}
+
+.stat-card p{
+    color:white;
+    font-size:18px;
+}
+
+.history-table{
+    width:100%;
+    border-collapse:collapse;
+    overflow:hidden;
+    border-radius:15px;
+}
+
+.history-table th{
+    background:linear-gradient(90deg,#ff9800,#ffb300);
+    color:white;
+    padding:15px;
+    font-size:18px;
+}
+
+.history-table td{
+    padding:15px;
+    text-align:center;
+    color:white;
+    background:rgba(255,255,255,.05);
+}
+
+.status-win{
+    color:#00ff88;
+    font-weight:700;
+}
+
+.overall-accuracy{
+    text-align:center;
+    margin-top:20px;
+    color:#00ff88;
+    font-size:32px;
+    font-weight:800;
+    text-shadow:0 0 15px rgba(0,255,136,.5);
 }

@@ -82,6 +82,23 @@ function toggleMenu() {
     document.getElementById("mobileMenu").classList.toggle("show");
 }
 </script>
+<script>
+const slider = document.querySelector('.slider');
+
+document.querySelector('.next').onclick = () => {
+    slider.scrollBy({
+        left:320,
+        behavior:'smooth'
+    });
+};
+
+document.querySelector('.prev').onclick = () => {
+    slider.scrollBy({
+        left:-320,
+        behavior:'smooth'
+    });
+};
+</script>
 
 </body>
 </html>

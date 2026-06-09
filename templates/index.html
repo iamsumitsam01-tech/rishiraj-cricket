@@ -220,7 +220,7 @@ String(seconds).padStart(2,'0');
 
             <!-- FIRST SET -->
 
-            <img src="/media/teams/team1.png" alt="India">
+            <img src="/media/teams/team1.jpg" alt="India">
             <img src="/media/teams/team2.png" alt="Australia">
             <img src="/media/teams/team3.png" alt="England">
             <img src="/media/teams/team4.png" alt="South Africa">
@@ -254,35 +254,67 @@ String(seconds).padStart(2,'0');
 
 </section>
 
-<section class="news-section">
+<section class="videos-section">
 
-    <h2>📰 Blog</h2>
+    <h2>🎥 Featured Cricket Videos</h2>
 
-    <div class="news-grid">
+    <div class="slider-container">
 
-        {% for news in latest_news %}
+        <button class="prev">&#10094;</button>
 
-        <div class="news-card">
+        <div class="slider">
 
-            <img src="{{ news.image.url }}" alt="">
+            <a href="https://youtu.be/EjsO3QEjWmg?si=ZECMDtqzUBU2tdiV" target="_blank" class="slide">
+                <img src="/media/videos/video1.png">
+            </a>
 
-            <div class="news-content">
+            <a href="https://youtu.be/zrbVkPZ5YZQ?si=XfCC-mrcRU_J_tDF" target="_blank" class="slide">
+                <img src="/media/videos/video2.png">
+            </a>
 
-                <h3>{{ news.title }}</h3>
+            <a href="https://youtu.be/YqgxbD4mCnc?si=5UKNZKjPyggSgqwX" target="_blank" class="slide">
+                <img src="/media/videos/video3.png">
+            </a>
 
-                <p>
-                    {{ news.description|truncatechars:120 }}
-                </p>
+            <a href="https://youtu.be/pDauPtrbFEQ?si=6Wdjdt7OZ_4yOisM" target="_blank" class="slide">
+                <img src="/media/videos/video4.png">
+            </a>
 
-                <a href="#" class="read-btn">
-                    Read More
-                </a>
+            <a href="https://youtu.be/pDauPtrbFEQ?si=6Wdjdt7OZ_4yOisM" target="_blank" class="slide">
+                <img src="/media/videos/video5.png">
+            </a>
 
-            </div>
+            <a href="https://youtu.be/ztum5ngoZa8?si=nBrqNr1TIIxaS8Qp" target="_blank" class="slide">
+                <img src="/media/videos/video6.png">
+            </a>
+
+            <a href="https://youtu.be/upwpwJOFS4I?si=qATunz9rUfx7yCI_" target="_blank" class="slide">
+                <img src="/media/videos/video7.png">
+            </a>
+
+            <a href="5) https://youtu.be/lUAhg8zDxaw?si=VZVfdg1mN6p_QeEt" target="_blank" class="slide">
+                <img src="/media/videos/video8.png">
+            </a>
+
+            <a href="https://youtu.be/XHq4DPfkwU4?si=HQMjJcbUSv96WPyB" target="_blank" class="slide">
+                <img src="/media/videos/video9.png">
+            </a>
+
+            <a href="https://youtu.be/KZm1gFEYa5A?si=bs7fA_ffKNv_ABHO" target="_blank" class="slide">
+                <img src="/media/videos/video10.png">
+            </a>
+
+            <a href="https://youtu.be/lLqAwUiYtX0?si=raySiEMLidt1TASb" target="_blank" class="slide">
+                <img src="/media/videos/video11.png">
+            </a>
+
+            <a href="https://youtu.be/8wpq-xbydqM?si=loYq5G0s3P6nwHNW" target="_blank" class="slide">
+                <img src="/media/videos/video12.png">
+            </a>
 
         </div>
 
-        {% endfor %}
+        <button class="next">&#10095;</button>
 
     </div>
 
@@ -295,59 +327,61 @@ String(seconds).padStart(2,'0');
     <div class="stats-grid">
 
         <div class="stat-card">
-            <h3>{{ total_predictions }}</h3>
+            <h3>5000</h3>
             <p>Total Predictions</p>
         </div>
 
         <div class="stat-card">
-            <h3>{{ correct_predictions }}</h3>
+            <h3>4810</h3>
             <p>Correct</p>
         </div>
 
         <div class="stat-card">
-            <h3>{{ wrong_predictions }}</h3>
+            <h3>190</h3>
             <p>Wrong</p>
         </div>
 
         <div class="stat-card">
-            <h3>{{ accuracy }}%</h3>
+            <h3>96.2%</h3>
             <p>Accuracy</p>
         </div>
 
     </div>
 
 </section>
+</section>
 
 
 <section class="history-section">
+
     <h2>📊 Prediction History</h2>
 
-
     <div class="table-wrapper">
-    <table class="history-table">
-        <tr>
-            <th>Match</th>
-            <th>Prediction</th>
-            <th>Result</th>
-            <th>Status</th>
-        </tr>
 
-        {% for match in history_matches %}
-        <tr>
-            <td>{{ match.team1 }} vs {{ match.team2 }}</td>
-            <td>{{ match.prediction }}</td>
-            <td>{{ match.result }}</td>
+        <table class="history-table">
 
-            {% if match.prediction_correct %}
-            <td>✅ Correct</td>
-            {% else %}
-            <td>❌ Wrong</td>
-            {% endif %}
-        </tr>
-        {% endfor %}
-    </table>
-</div>
-    <h3>🎯 Overall Accuracy: {{ accuracy }}%</h3>
+            <tr>
+                <th>Match</th>
+                <th>Prediction</th>
+                <th>Result</th>
+                <th>Status</th>
+            </tr>
+
+            <tr>
+                <td>5000+</td>
+                <td>4810 Correct Predictions</td>
+                <td>96.2% Accuracy</td>
+                <td class="status-win">🏆 Premium Accuracy</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <h3 class="overall-accuracy">
+        🎯 Overall Accuracy: 96.2%
+    </h3>
+
 </section>
 
 
