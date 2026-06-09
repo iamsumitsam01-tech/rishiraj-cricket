@@ -1851,3 +1851,108 @@ main{
     gap:30px;
     margin-left:auto;
 }
+/* =========================
+   TOP CRICKET TEAMS
+========================= */
+
+.teams-section{
+    padding:80px 20px;
+    text-align:center;
+    overflow:hidden;
+}
+
+.teams-section h2{
+    font-size:50px;
+    font-weight:800;
+    margin-bottom:10px;
+    color:#fff;
+}
+
+.teams-subtitle{
+    color:#a0a0a0;
+    font-size:18px;
+    margin-bottom:40px;
+}
+
+/* MARQUEE */
+
+.teams-marquee{
+    width:100%;
+    overflow:hidden;
+    position:relative;
+}
+
+/* MOVING TRACK */
+
+.teams-track{
+    display:flex;
+    align-items:center;
+    gap:40px;
+    width:max-content;
+    animation:teamScroll 30s linear infinite;
+}
+
+/* LOGOS */
+
+.teams-track img{
+    width:90px;
+    height:90px;
+    object-fit:cover;
+    border-radius:50%;
+
+    border:3px solid #00f7ff;
+
+    background:#111;
+
+    box-shadow:
+    0 0 10px rgba(0,247,255,.5),
+    0 0 25px rgba(0,247,255,.3);
+
+    transition:.3s;
+}
+
+.teams-track img:hover{
+    transform:scale(1.15);
+}
+
+/* INFINITE LOOP */
+
+@keyframes teamScroll{
+
+    0%{
+        transform:translateX(0);
+    }
+
+    100%{
+        transform:translateX(-50%);
+    }
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .teams-section{
+        padding:60px 10px;
+    }
+
+    .teams-section h2{
+        font-size:38px;
+    }
+
+    .teams-subtitle{
+        font-size:15px;
+    }
+
+    .teams-track{
+        gap:25px;
+        animation:teamScroll 22s linear infinite;
+    }
+
+    .teams-track img{
+        width:70px;
+        height:70px;
+    }
+
+}
