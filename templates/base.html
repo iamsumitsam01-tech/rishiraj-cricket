@@ -70,6 +70,12 @@
         <p>Match Predictions • Cricket News • Analysis</p>
     </footer>
 
+    <div id="join-popup">
+    <span class="tg-icon">📢</span>
+    <span id="join-text"></span>
+</div>
+
+
 <a href="https://t.me/+SGzfN49u7CEyM2M0"
    target="_blank"
    class="telegram-float">
@@ -165,6 +171,74 @@ current=0;
 updateSlider();
 
 },2500);
+
+</script>
+
+
+<script>
+
+const names = [
+
+"Vinod",
+"Rahul",
+"Aman",
+"Rohit",
+"Akash",
+"Vikas",
+"Ankit",
+"Rakesh",
+"Sumit",
+"Deepak",
+
+"Ajay",
+"Mohit",
+"Nitin",
+"Manish",
+"Arjun",
+"Sachin",
+"Yash",
+"Harsh",
+"Tarun",
+"Piyush",
+
+"Karan",
+"Shivam",
+"Abhishek",
+"Vivek",
+"Gaurav",
+"Lokesh",
+"Raj",
+"Sandeep",
+"Mukesh",
+"Pradeep"
+
+];
+
+const popup =
+document.getElementById("join-popup");
+
+const text =
+document.getElementById("join-text");
+
+function showPopup(){
+
+const randomName =
+names[Math.floor(Math.random()*names.length)];
+
+text.innerHTML =
+`<strong>${randomName}</strong> joined Telegram`;
+
+popup.classList.add("show");
+
+setTimeout(()=>{
+popup.classList.remove("show");
+},4000);
+
+}
+
+showPopup();
+
+setInterval(showPopup,7000);
 
 </script>
 
