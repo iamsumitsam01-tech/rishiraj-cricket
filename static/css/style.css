@@ -2078,3 +2078,147 @@ main{
     font-weight:800;
     text-shadow:0 0 15px rgba(0,255,136,.5);
 }
+
+.profile-section{
+    padding:60px 0;
+    overflow:hidden;
+}
+
+.profile-title{
+    text-align:center;
+    font-size:38px;
+    font-weight:800;
+    color:white;
+    margin-bottom:40px;
+
+    background:linear-gradient(
+        90deg,
+        #00e5ff,
+        #ffffff,
+        #00e5ff
+    );
+
+    background-size:300% auto;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:shine 4s linear infinite;
+}
+
+@keyframes shine{
+    0%{background-position:0%;}
+    100%{background-position:300%;}
+}
+
+.profile-slider{
+    width:100%;
+    overflow:hidden;
+    position:relative;
+}
+
+.profile-track{
+    display:flex;
+    gap:25px;
+    width:max-content;
+    animation:scrollProfile 25s linear infinite;
+}
+
+.profile-track img{
+    width:220px;
+    height:320px;
+    object-fit:cover;
+
+    border-radius:25px;
+
+    border:2px solid rgba(255,255,255,.15);
+
+    box-shadow:
+    0 0 25px rgba(0,229,255,.35);
+
+    transition:.4s;
+}
+
+.profile-track img:hover{
+    transform:translateY(-12px) scale(1.04);
+
+    box-shadow:
+    0 0 40px rgba(0,229,255,.8);
+}
+
+@keyframes scrollProfile{
+
+    0%{
+        transform:translateX(0);
+    }
+
+    100%{
+        transform:translateX(-50%);
+    }
+
+}
+
+.creator-section{
+    padding:80px 0;
+    text-align:center;
+    overflow:hidden;
+}
+
+.creator-title{
+    font-size:42px;
+    font-weight:800;
+    color:#fff;
+    margin-bottom:50px;
+
+    background:linear-gradient(
+    90deg,
+    #00e5ff,
+    #fff,
+    #00e5ff);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:shine 4s linear infinite;
+}
+
+@keyframes shine{
+    100%{
+        filter:hue-rotate(360deg);
+    }
+}
+
+.coverflow-slider{
+    position:relative;
+    width:100%;
+    height:500px;
+    perspective:1200px;
+}
+
+.coverflow-track{
+    position:relative;
+    width:100%;
+    height:100%;
+}
+
+.coverflow-track img{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:280px;
+    height:400px;
+
+    object-fit:contain;
+
+    transform-style:preserve-3d;
+
+    border-radius:25px;
+
+    box-shadow:
+    0 0 30px rgba(0,229,255,.35);
+
+    transition:1s ease;
+}

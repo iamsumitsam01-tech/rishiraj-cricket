@@ -100,5 +100,73 @@ document.querySelector('.prev').onclick = () => {
 };
 </script>
 
+<script>
+
+const slides =
+document.querySelectorAll(".coverflow-track img");
+
+let current = 0;
+
+function updateSlider(){
+
+slides.forEach((slide,index)=>{
+
+let offset = index-current;
+
+if(offset===0){
+
+slide.style.transform=
+"translate(-50%,-50%) scale(1.15)";
+slide.style.zIndex="10";
+slide.style.opacity="1";
+
+}
+
+else if(offset===-1 || offset===18){
+
+slide.style.transform=
+"translate(-180%,-50%) scale(.85)";
+slide.style.zIndex="5";
+slide.style.opacity=".7";
+
+}
+
+else if(offset===1 || offset===-18){
+
+slide.style.transform=
+"translate(80%,-50%) scale(.85)";
+slide.style.zIndex="5";
+slide.style.opacity=".7";
+
+}
+
+else{
+
+slide.style.transform=
+"translate(-50%,-50%) scale(.6)";
+slide.style.opacity="0";
+
+}
+
+});
+
+}
+
+updateSlider();
+
+setInterval(()=>{
+
+current++;
+
+if(current>=slides.length){
+current=0;
+}
+
+updateSlider();
+
+},2500);
+
+</script>
+
 </body>
 </html>
