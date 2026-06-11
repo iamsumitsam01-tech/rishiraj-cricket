@@ -165,9 +165,9 @@ MIDDLEWARE.insert(
 import os
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
-    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
+    'CLOUD_NAME': os.environ.get('dd95tptli'),
+    'API_KEY': os.environ.get('162797638168598'),
+    'API_SECRET': os.environ.get('YAQbJFPAwjtmdulDZAs99SKgPW0'),
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
